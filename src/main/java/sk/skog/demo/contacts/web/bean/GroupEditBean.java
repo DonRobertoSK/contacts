@@ -71,4 +71,12 @@ public class GroupEditBean implements Serializable {
 		this.persons = persons;
 	}
 
+	public Set<Person> getSelectedPersons() {
+		return selectedPersons;
+	}
+
+	public void setSelectedPersons(Set<Person> selectedPersons) {
+		this.selectedPersons = selectedPersons;
+	}
+
 }

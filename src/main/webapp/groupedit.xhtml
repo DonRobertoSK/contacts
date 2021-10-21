@@ -22,7 +22,7 @@
 			<p:selectManyMenu value="#{groupEditBean.selectedPersons}" 
 				converter="omnifaces.SelectItemsConverter" showCheckbox="true"
 				collectionType="java.util.LinkedHashSet">
-				<f:selectItems value="#{personEditBean.persons}" var="person" 
+				<f:selectItems value="#{groupEditBean.persons}" var="person" 
 					itemValue="#{person}" itemLabel="#{person.firstName} #{person.lastName}"/>       
 			</p:selectManyMenu>
 		</h:panelGrid>
