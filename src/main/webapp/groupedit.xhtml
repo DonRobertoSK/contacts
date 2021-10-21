@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="id" value="#{groupEditBean.id}" />
+			<f:viewAction action="#{groupEditBean.init}"/>
+		</f:metadata>
+	</ui:define>
+	<ui:define name="content">
+		<h:panelGrid>
+			<p:outputLabel value="Name" />
+			<p:inputText value="#{groupEditBean.group.name}" required="true" requiredMessage="Group name must be set"/>
+			<p:outputLabel value="Description" />
+			<p:inputText value="#{groupEditBean.group.description}" />
+			<h:outputLabel value="Contacts" />
+			<p:selectManyMenu value="#{groupEditBean.selectedPersons}" 
+				converter="omnifaces.SelectItemsConverter" showCheckbox="true"
+				collectionType="java.util.LinkedHashSet">
+				<f:selectItems value="#{personEditBean.persons}" var="person" 
+					itemValue="#{person}" itemLabel="#{person.firstName} #{person.lastName}"/>       
+			</p:selectManyMenu>
+		</h:panelGrid>
+	</ui:define>
+	<ui:define name="commands">
+		<p:commandButton value="Return back" action="#{groupEditBean.back}" process="@this"/>
+		<p:commandButton value="Save" action="#{groupEditBean.save}" process="mainForm"/>
+		<p:commandButton value="Delete group" action="#{groupEditBean.delete}" process="@this">
+			<p:confirm header="Delete group" message="Are you sure to delete this group?" icon="ui-icon-alert" />
+		</p:commandButton>
+	</ui:define>
+</ui:composition>

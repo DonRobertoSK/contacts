@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
+	<ui:define name="content">
+		<p:dataTable id="personsTable" var="person" sortMode="single" value="#{personListBean.dataModel}">
+			<p:column sortable="true" sortBy="#{person.id}">
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{person.id}" />
+			</p:column>
+			<p:column sortable="true" sortBy="#{person.firstName}">
+				<f:facet name="header">First name</f:facet>
+				<h:outputText value="#{person.firstName}" />
+			</p:column>
+			<p:column sortable="true" sortBy="#{person.lastName}">
+				<f:facet name="header">Last name</f:facet>
+				<h:outputText value="#{person.lastName}" />
+			</p:column>
+			<p:column sortable="false">
+				<p:link href="personedit.xhtml" value="Detail">
+					<f:param name="id" value="#{person.id}"/>
+				</p:link>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+	<ui:define name="commands">
+		<p:linkButton href="personedit.xhtml" value="Add new contact" />
+	</ui:define>
+</ui:composition>

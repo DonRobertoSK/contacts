@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:o="http://omnifaces.org/ui">
+<h:head>
+    <title>Contacts</title>
+    <h:outputStylesheet library="css" name="font-awesome.min.css" />
+    <h:outputStylesheet library="css" name="style.css"/>
+    <ui:insert name="metadata"/>
+</h:head>
+<h:body>
+    <o:form id="mainForm">
+        <p:ajaxStatus onstart="document.body.style.cursor='wait';" oncomplete="document.body.style.cursor='auto';"/>
+        <pe:layout fullPage="true">
+            <pe:layoutPane position="west">
+                <p:menu style="overflow: hidden;">
+                    <p:menuitem value="Persons" outcome="personlist"/>
+                    <p:menuitem value="Groups" outcome="grouplist"/>
+                </p:menu>
+            </pe:layoutPane>
+            <pe:layoutPane position="center" style="border: 0">
+                <ui:insert name="content"/>
+                <p:messages id="messages" autoUpdate="true"/>
+                <ui:insert name="commands"/>
+            </pe:layoutPane>
+        </pe:layout>
+        <p:confirmDialog global="true">
+            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+        </p:confirmDialog>
+    </o:form>
+    <o:highlight/>
+</h:body>
+</html>

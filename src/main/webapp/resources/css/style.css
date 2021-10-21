@@ -1,0 +1,19 @@
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 90%;
+}
+
+label.error {
+	color: #f00;
+}
+
+input.error, select.error, textarea.error {
+	background-color: #fee;
+}
+
+span.ui-icon.ui-confirm-dialog-severity {
+	display: none;
+}
+
+.ui-widget-overlay {
+	opacity: 0;
+}

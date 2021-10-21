@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="id" value="#{personEditBean.id}" />
+			<f:viewAction action="#{personEditBean.init}"/>
+		</f:metadata>
+	</ui:define>
+	<ui:define name="content">
+		<h:panelGrid columns="2">
+			<p:outputLabel value="First name" />
+			<p:inputText value="#{personEditBean.person.firstName}" required="true" requiredMessage="First name must be set"/>
+			<p:outputLabel value="Last name" />
+			<p:inputText value="#{personEditBean.person.lastName}" required="true" requiredMessage="Last name must be set"/>
+			<p:outputLabel value="Address" />
+			<p:inputText value="#{personEditBean.person.address}" />
+			<p:outputLabel value="Phone number" />
+			<p:inputText value="#{personEditBean.person.phoneNumber}" />
+			<p:outputLabel value="Groups"/>
+			<p:selectManyMenu value="#{personEditBean.selectedGroups}" 
+				converter="omnifaces.SelectItemsConverter" showCheckbox="true"
+				collectionType="java.util.LinkedHashSet">
+				<f:selectItems value="#{personEditBean.groups}" var="group" 
+					itemValue="#{group}" itemLabel="#{group.name}"/>       
+			</p:selectManyMenu>
+		</h:panelGrid>
+	</ui:define>
+	<ui:define name="commands">
+		<p:commandButton value="Return back" action="#{personEditBean.back}" process="@this"/>
+		<p:commandButton value="Save" action="#{personEditBean.save}" process="mainForm"/>
+		<p:commandButton value="Delete contact" action="#{personEditBean.delete}" process="@this">
+			<p:confirm header="Delete contact" message="Are you sure to delete this contact?" icon="ui-icon-alert" />
+		</p:commandButton>
+	</ui:define>
+</ui:composition>

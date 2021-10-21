@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+        <changeSet id="1" author="Robert Kristofic">
+            <sql>
+                insert into GRP (ID, NAME, DESCRIPTION)
+                    values (1, 'Friends', 'Friends group');
+                insert into GRP (ID, NAME, DESCRIPTION)
+                    values (2, 'Family', 'Family group');
+                insert into GRP (ID, NAME, DESCRIPTION)
+                    values (3, 'Colleagues', 'Colleagues group');
+            </sql>
+        </changeSet>
+		<changeSet id="2" author="Robert Kristofic">
+			<sql>
+				insert into PERSON (ID, FIRSTNAME, LASTNAME, ADDRESS, PHONENUMBER)
+					values (1, 'Albert', 'Einstein', '112 Mercer Street, Princeton, New Jersey', '+1-202-555-0160');
+				insert into PERSON (ID, FIRSTNAME, LASTNAME, ADDRESS, PHONENUMBER)
+					values (2, 'Niels', 'Bohr', null, null);
+				insert into PERSON (ID, FIRSTNAME, LASTNAME, ADDRESS, PHONENUMBER)
+					values (3, 'Enrico', 'Fermi', null, null);
+				insert into PERSON (ID, FIRSTNAME, LASTNAME, ADDRESS, PHONENUMBER)
+					values (4, 'Erwin', 'Schrödinger', null, null);
+			</sql>
+		</changeSet>
+</databaseChangeLog>
